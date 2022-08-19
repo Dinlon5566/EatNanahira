@@ -1,4 +1,6 @@
-const MODE_NORMAL = 1, MODE_ENDLESS = 2, MODE_PRACTICE = 3;
+const MODE_NORMAL = 1,
+    MODE_ENDLESS = 2,
+    MODE_PRACTICE = 3;
 
 (function(w) {
     const DEFAULT_I18N_RESOURCE = 'en';
@@ -45,10 +47,10 @@ const MODE_NORMAL = 1, MODE_ENDLESS = 2, MODE_PRACTICE = 3;
         (isDesktop ? '#welcome,#GameTimeLayer,#GameLayerBG,#GameScoreLayer.SHADE{position: absolute;}' :
             '#welcome,#GameTimeLayer,#GameLayerBG,#GameScoreLayer.SHADE{position:fixed;}@media screen and (orientation:landscape) {#landscape {display: box; display: -webkit-box; display: -moz-box; display: -ms-flexbox;}}') +
         '</style>');
-    let map = {'d': 1, 'f': 2, 'j': 3, 'k': 4};
+    let map = { 'd': 1, 'f': 2, 'j': 3, 'k': 4 };
     if (isDesktop) {
         document.write('<div id="gameBody">');
-        document.onkeydown = function (e) {
+        document.onkeydown = function(e) {
             let key = e.key.toLowerCase();
             if (Object.keys(map).indexOf(key) !== -1) {
                 click(map[key])
@@ -69,8 +71,8 @@ const MODE_NORMAL = 1, MODE_ENDLESS = 2, MODE_PRACTICE = 3;
         showWelcomeLayer();
         body = document.getElementById('gameBody') || document.body;
         body.style.height = window.innerHeight + 'px';
-        transform = typeof (body.style.webkitTransform) != 'undefined' ? 'webkitTransform' : (typeof (body.style.msTransform) !=
-        'undefined' ? 'msTransform' : 'transform');
+        transform = typeof(body.style.webkitTransform) != 'undefined' ? 'webkitTransform' : (typeof(body.style.msTransform) !=
+            'undefined' ? 'msTransform' : 'transform');
         transitionDuration = transform.replace(/ransform/g, 'ransitionDuration');
         GameTimeLayer = document.getElementById('GameTimeLayer');
         GameLayer.push(document.getElementById('GameLayer1'));
@@ -178,7 +180,7 @@ const MODE_NORMAL = 1, MODE_ENDLESS = 2, MODE_PRACTICE = 3;
         _gameBBListIndex = 0,
         _gameOver = false,
         _gameStart = false,
-        _gameSettingNum=20,
+        _gameSettingNum = 20,
         _gameTime, _gameTimeNum, _gameScore, _date1, deviationTime;
 
     let _gameStartTime, _gameStartDatetime;
@@ -257,7 +259,7 @@ const MODE_NORMAL = 1, MODE_ENDLESS = 2, MODE_PRACTICE = 3;
         }
     }
     //使重试按钮获得焦点
-    function foucusOnReplay(){
+    function foucusOnReplay() {
         $('#replay').focus()
     }
 
@@ -266,7 +268,7 @@ const MODE_NORMAL = 1, MODE_ENDLESS = 2, MODE_PRACTICE = 3;
         clearInterval(_gameTime);
         let cps = getCPS();
         updatePanel();
-        setTimeout(function () {
+        setTimeout(function() {
             GameLayerBG.className = '';
             showGameScoreLayer(cps);
             foucusOnReplay();
@@ -323,7 +325,8 @@ const MODE_NORMAL = 1, MODE_ENDLESS = 2, MODE_PRACTICE = 3;
     function refreshGameLayer(box, loop, offset) {
         let i = Math.floor(Math.random() * 1000) % 4 + (loop ? 0 : 4);
         for (let j = 0; j < box.children.length; j++) {
-            let r = box.children[j], rstyle = r.style;
+            let r = box.children[j],
+                rstyle = r.style;
             rstyle.left = (j % 4) * blockSize + 'px';
             rstyle.bottom = Math.floor(j / 4) * blockSize + 'px';
             rstyle.width = blockSize + 'px';
@@ -345,9 +348,9 @@ const MODE_NORMAL = 1, MODE_ENDLESS = 2, MODE_PRACTICE = 3;
             box.style.webkitTransitionDuration = '0ms';
             box.style.display = 'none';
             box.y = -blockSize * (Math.floor(box.children.length / 4) + (offset || 0)) * loop;
-            setTimeout(function () {
+            setTimeout(function() {
                 box.style[transform] = 'translate3D(0,' + box.y + 'px,0)';
-                setTimeout(function () {
+                setTimeout(function() {
                     box.style.display = 'block';
                 }, 100);
             }, 200);
@@ -382,7 +385,7 @@ const MODE_NORMAL = 1, MODE_ENDLESS = 2, MODE_PRACTICE = 3;
             return false;
         }
         if ((p.id === tar.id && tar.notEmpty) || (p.cell === 0 && x < blockSize) || (p.cell === 1 && x > blockSize && x < 2 *
-            blockSize) || (p.cell === 2 && x > 2 * blockSize && x < 3 * blockSize) || (p.cell === 3 && x > 3 * blockSize)) {
+                blockSize) || (p.cell === 2 && x > 2 * blockSize && x < 3 * blockSize) || (p.cell === 3 && x > 3 * blockSize)) {
             if (!_gameStart) {
                 gameStart();
             }
@@ -467,7 +470,7 @@ const MODE_NORMAL = 1, MODE_ENDLESS = 2, MODE_PRACTICE = 3;
         l.attr('class', l.attr('class').replace(/bgc\d/, 'bgc' + c));
         $('#GameScoreLayer-text').html(shareText(cps));
         let normalCond = legalDeviationTime() || mode !== MODE_NORMAL;
-        l.css('color', normalCond ? '': 'red');
+        l.css('color', normalCond ? '' : 'red');
 
         $('#cps').text(cps.toFixed(2));
         $('#score').text(scoreToString(score));
@@ -502,10 +505,10 @@ const MODE_NORMAL = 1, MODE_ENDLESS = 2, MODE_PRACTICE = 3;
             SubmitResults();
         }
 
-        if (cps <= 5) return I18N['text-level-1'];
-        if (cps <= 8) return I18N['text-level-2'];
-        if (cps <= 10)  return I18N['text-level-3'];
-        if (cps <= 15) return I18N['text-level-4'];
+        if (cps <= 3) return I18N['text-level-1'];
+        if (cps <= 5) return I18N['text-level-2'];
+        if (cps <= 7) return I18N['text-level-3'];
+        if (cps <= 10) return I18N['text-level-4'];
         return I18N['text-level-5'];
     }
 
@@ -530,7 +533,7 @@ const MODE_NORMAL = 1, MODE_ENDLESS = 2, MODE_PRACTICE = 3;
             }
             return value = document.cookie.match("(?:^|;)\\s*" + name.replace(/([-.*+?^${}()|[\]\/\\])/g, "\\$1") + "=([^;]*)"),
                 value = value && "string" == typeof value[1] ? unescape(value[1]) : !1, (/^(\{|\[).+\}|\]$/.test(value) ||
-                /^[0-9]+$/g.test(value)) && eval("value=" + value), value;
+                    /^[0-9]+$/g.test(value)) && eval("value=" + value), value;
         }
         let data = {};
         value = document.cookie.replace(/\s/g, "").split(";");
@@ -578,8 +581,8 @@ const MODE_NORMAL = 1, MODE_ENDLESS = 2, MODE_PRACTICE = 3;
     w.save_cookie = function() {
         const settings = ['username', 'message', 'keyboard', 'title', 'gameTime'];
         for (let s of settings) {
-            let value=$(`#${s}`).val();
-            if(value){
+            let value = $(`#${s}`).val();
+            if (value) {
                 cookie(s, value.toString(), 100);
             }
         }
@@ -665,4 +668,4 @@ const MODE_NORMAL = 1, MODE_ENDLESS = 2, MODE_PRACTICE = 3;
             }`);
         })
     }
-}) (window);
+})(window);
