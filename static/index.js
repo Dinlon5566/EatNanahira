@@ -219,15 +219,15 @@ const MODE_NORMAL = 1,
 
     function gameInit() {
         createjs.Sound.registerSound({
-            src: "./static/music/err.mp3",
+            src: "./static/music/chikanna.mp3",
             id: "err",
         });
         createjs.Sound.registerSound({
-            src: "./static/music/end.mp3",
+            src: "./static/music/haii.mp3",
             id: "end",
         });
         createjs.Sound.registerSound({
-            src: "./static/music/tap.mp3",
+            src: "./static/music/cune-fix.wav",
             id: "tap",
         });
         gameRestart();
