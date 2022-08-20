@@ -17,9 +17,12 @@
 
     <link href="./static/index.css" rel="stylesheet" type="text/css">
 
-    <script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+    <!--
+        <script src="https://passport.cnblogs.com/scripts/jsencrypt.min.js"></script> 
+        <script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>    
+    -->
+
     <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-    <script src="https://passport.cnblogs.com/scripts/jsencrypt.min.js"></script>
     <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
@@ -74,13 +77,14 @@
                                 <li><a class="dropdown-item" onclick="changeMode(MODE_PRACTICE)" data-i18n="practice">PRACTICE-I18N</a></li>
                             </ul>
                         </div>
-                        <!--
+                        <!--Three bottom-->
                         <a class="btn btn-secondary btn-lg" onclick="show_setting()" data-i18n="settings">SETTINGS-I18N</a>
-                        -->
+
                     </div>
                 </div>
 
                 <div id="setting" class="container" style="display: none;">
+                    <!--
                     <div class="container mb-3 btn-group">
                         <a data-i18n="img-before" type="button" class="btn text-nowrap btn-secondary me-1" onclick="getClickBeforeImage()" style="left: 0">IMG-BEFORE-I18N</a>
                         <input type="file" id="click-before-image" accept="image/*" class="d-none" onchange="saveClickBeforeImage()">
@@ -88,25 +92,31 @@
                         <input type="file" id="click-after-image" accept="image/*" style="display: none;" onchange="saveClickAfterImage()">
                         <a id="sound" type="button" class="btn text-nowrap btn-secondary" onclick="changeSoundMode()"></a>
                     </div>
+                    -->
+                    <!--
                     <div class="input-group mb-3">
                         <div class="input-group-prepend col-2">
                             <span class="input-group-text" data-i18n="title">TITLE-I18N</span>
                         </div>
                         <input data-placeholder-i18n="eat-kano" type="text" id="title" class="form-control" placeholder="EAT-KANO-I18N">
                     </div>
+                    -->
                     <div class="input-group mb-3">
                         <div class="input-group-prepend col-2">
                             <span data-i18n="key" class="input-group-text">KEY-I18N</span>
                         </div>
                         <input data-placeholder-i18n="default-dfjk" type="text" id="keyboard" class="form-control" maxlength=4 placeholder="DFJK-I18N">
                     </div>
+                    <!--
                     <div class="input-group mb-3">
                         <div class="input-group-prepend col-2">
                             <span data-i18n="time" class="input-group-text">TIME-I18N</span>
                         </div>
                         <input data-placeholder-i18n="default-20s" type="text" id="gameTime" class="form-control" maxlength=4 placeholder="default-20s">
                     </div>
+                    -->
                     <button type="button" class="btn btn-secondary btn-lg" onclick="show_btn();save_cookie();" data-i18n="ok">OK-I18N</button>
+
                 </div>
             </div>
         </div>
